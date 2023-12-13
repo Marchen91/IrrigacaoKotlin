@@ -1,0 +1,153 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".TelaAzulActivity">
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:layout_alignParentTop="true"  />
+
+    <!-- Primeiro TextView no topo -->
+
+
+    <TextView
+        android:id="@+id/textViewMeioAltoAzul"
+        android:layout_width="800px"
+        android:layout_height="300px"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Valor de Humidade: % "
+        android:fontFamily="monospace"
+        android:layout_marginTop="130dp"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textViewMeioAzul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="186dp"
+        android:layout_marginEnd="209dp"
+        android:fontFamily="monospace"
+        android:textSize="25sp"
+         />
+
+
+
+
+
+
+    <!-- Segundo TextView no centro -->
+    <TextView
+        android:id="@+id/textViewCentroAzul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="500dp"
+        android:layout_centerInParent="true"/>
+
+
+    <TextView
+        android:id="@+id/MeioAzulBaixo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="101dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="357dp"
+        android:fontFamily="monospace"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/MinTopo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="356dp"
+        android:layout_marginEnd="209dp"
+        android:fontFamily="monospace"
+        android:textSize="25sp"
+        android:text="Mínima %" />
+
+
+    <TextView
+        android:id="@+id/MinDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="174dp"
+        android:textSize="25sp"
+        android:layout_marginBottom="268dp" />
+
+    <TextView
+        android:id="@+id/MaxTopo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="396dp"
+        android:textSize="25sp"
+        android:text="Maxima %" />
+
+    <TextView
+        android:id="@+id/MaxDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="160dp"
+        android:textSize="25sp"
+        android:layout_marginBottom="228dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#00BCD4">
+
+        <!-- Botão Quadrado -->
+        <ImageButton
+            android:layout_width="9dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:onClick="abrirMAin"
+            android:src="@drawable/baseline_bar_chart_24" />
+
+        <!-- Botão Círculo -->
+
+        <!-- Botão Triângulo -->
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_opacity_24"/>
+
+        <ImageButton
+            android:id="@+id/imageButtonQuadrado"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:onClick="abrirTelaVerde"
+            android:src="@drawable/baseline_question_mark_24" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,73 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".TelaVerdeActivity">
+
+    <!-- Primeiro TextView no topo -->
+    <TextView
+        android:id="@+id/textViewTopo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sobre"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:textSize="30sp" />
+
+
+
+    <TextView
+        android:id="@+id/textViewMeio"
+        android:layout_width="800px"
+        android:layout_height="300px"
+        android:text="Aplicação controle via ESP de humidade e irrigação com limites defnidos por usuário."
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:textSize="15sp" />
+
+    <!-- Segundo TextView no centro -->
+    <TextView
+        android:id="@+id/textViewCentro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Criado em: "
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/textViewAbaixo"
+        android:layout_width="800px"
+        android:layout_height="300px"
+        android:text="Alunos: Francis Guedes  \n Marcelo Henrique de Souza Braga"
+
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="450dp"
+        android:textSize="15sp" />
+
+    <!-- Seu conteúdo existente, se houver, pode ser mantido aqui -->
+    <!-- Barra Inferior -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary">
+
+        <!-- Botão Quadrado -->
+        <Button
+            android:id = "@+id/buttonVoltar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Voltar"
+            android:background="#00BCD4"/>
+
+
+
+
+    </LinearLayout>
+</RelativeLayout>
