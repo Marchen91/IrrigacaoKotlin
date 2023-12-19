@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    fun sortearNumeros(view: View) {
+    fun enviarNumeros(view: View) {
         val min = numberPickerMin.value
         val max = numberPickerMax.value
 
@@ -88,13 +88,13 @@ class MainActivity : AppCompatActivity() {
 
 
         val testeMap = hashMapOf(
-            "min" to min.toString(),
-            "max" to max.toString(),
-            "vezes" to "3"
+            "min" to min,
+            "max" to max,
+
 
         )
 
-        db.collection("teste").document("valores")
+        db.collection("nodemcu").document("limites")
             .set(testeMap).addOnCompleteListener {
                 Log.d("db", "sucesso")
             }
@@ -108,14 +108,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    fun limparDados(view: View) {
-        // Limpar os dados aqui
-        resultText.text = ""
-
-        // Alterar a visibilidade dos botões após limpar
-        buttonSortear.visibility = View.VISIBLE
-        buttonLimpar.visibility = View.GONE
-    }
 
     fun abrirTelaVerde(view: View) {
         Log.d("MeuApp", "Clicou no botão para abrir TelaVerdeActivity")

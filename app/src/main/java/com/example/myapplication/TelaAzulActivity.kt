@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -24,14 +26,18 @@ class TelaAzulActivity : AppCompatActivity() {
 
         // Obtém a referência para o TextView e Button no layout
 
-        var textViewData3: TextView = findViewById(R.id.textViewMeioAzul)
-        var textViewData4: TextView = findViewById(R.id.textViewMeioAltoAzul)
-        var textViewData5: TextView = findViewById(R.id.MeioAzulBaixo)
-        val textViewData: TextView = findViewById(R.id.textViewCentroAzul)
-        var textViewData6: TextView = findViewById(R.id.MinDB)
-        var textViewData7: TextView = findViewById(R.id.MaxDB)
+            var textViewData3: TextView = findViewById(R.id.textViewMeioAzul)
+            var textViewData4: TextView = findViewById(R.id.textViewMeioAltoAzul)
+            var textViewData5: TextView = findViewById(R.id.MeioAzulBaixo)
+            val textViewData: TextView = findViewById(R.id.textViewCentroAzul)
+            var textViewData6: TextView = findViewById(R.id.MinDB)
+            var textViewData7: TextView = findViewById(R.id.MaxDB)
+            var progressBar2: ProgressBar = findViewById(R.id.progressBar2)
+            var progressValue = 0
+            val imageViewIrrigacao: ImageView = findViewById(R.id.imageViewIrrigacao)
 
-        //val buttonVoltar: Button = findViewById(R.id.buttonVoltar) // Certifique-se de usar o ID correto
+
+
 
         // Obtém a data e hora atuais e formata para exibição
         val currentDateTime = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(Date())
@@ -43,42 +49,47 @@ class TelaAzulActivity : AppCompatActivity() {
         }
 
 
-        db.collection("teste").document("teste2").addSnapshotListener { documento, error ->
-            if(documento != null){
 
-                val valorHumidade = documento.getLong("teste3")
-                val valorIrriga = documento.getBoolean("teste4")
+        db.collection("nodemcu").document("valores").addSnapshotListener { documento, error ->
+            if (documento != null) {
+                val valorHumidade = documento.getLong("humidade")
+                val valorIrriga = documento.getBoolean("irrigacao")
                 val textoIrriga = if (valorIrriga == true) "Irrigação Ligada" else "Irrigação desligada"
-                if (valorIrriga == true){
+
+                if (valorIrriga == true) {
                     textViewData5.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
+                    //imageViewIrrigacao.setImageResource(R.drawable.poweron)
 
-                }
-                else{
+                } else {
                     textViewData5.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark))
+                    //imageViewIrrigacao.setImageResource(R.drawable.poweroff)
 
                 }
-                textViewData3.text = valorHumidade.toString()
+
+                textViewData3.text = valorHumidade.toString() + "%"  // Adiciona "%" ao valor de valorHumidade
                 textViewData5.text = textoIrriga
 
+                val valorHumidadeInt = valorHumidade?.toInt()
 
-
+                if (valorHumidadeInt != null) {
+                    progressValue = valorHumidadeInt
+                    val clampedProgress = if (progressValue < 0) 0 else if (progressValue > 100) 100 else progressValue
+                    progressBar2.progress = clampedProgress
+                }
             }
-
-
         }
 
-        db.collection("teste").document("valores").addSnapshotListener { documento2, error ->
+        db.collection("nodemcu").document("limites").addSnapshotListener { documento2, error ->
             if(documento2 != null){
-                val valorMaxDB = documento2.getString("max")
-                textViewData7.text = valorMaxDB
-                val valorMinDB = documento2.getString("min")
-                textViewData6.text = valorMinDB
+                val valorMaxDB = documento2.getLong("max")
+                textViewData7.text = valorMaxDB.toString() + "%"
+                val valorMinDB = documento2.getLong("min")
+                textViewData6.text = valorMinDB.toString() + "%"
 
 
             }
 
         }
-
 
 
         // Define a data e hora no TextView
